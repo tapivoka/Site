@@ -22,7 +22,7 @@ export default ({ data }) => {
           {years.map(
             year => (
               <>
-                <h2 className="publications__year">{year}</h2>
+                <h2 className="publications__year" key={year}>{year}</h2>
                 {groupedByYear[year].map(
                   ({ node }) =>
                     (
@@ -47,6 +47,7 @@ export const query = graphql`
             edges {
                 node {
                     id
+                    html
                     frontmatter {
                         title
                         journal
