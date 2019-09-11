@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{208:function(e,n,t){"use strict";t.r(n);var a=t(0),c=t.n(a),r=t(203),l=(t(214),t(215)),o=t.n(l);n.default=function(e){e.data;return c.a.createElement(r.a,null,c.a.createElement("div",null,c.a.createElement("h1",null,"Приветствуем вас на странице группы Молекулярной фотодинамики"),c.a.createElement("img",{src:o.a})))}},215:function(e,n,t){e.exports=t.p+"static/group-photo-18e4cc4916690165dd08a71515526598.jpeg"}}]);
+//# sourceMappingURL=component---src-pages-index-js-b052834952519ef99356.js.map
