@@ -18,7 +18,7 @@ export default ({ data }) => {
         <div className="contacts">
           <div className="contacts__info">
             <FontAwesomeIcon className="contacts__icon" icon={faUniversity} />
-            <div className="contacts__text">Институт химической кинетики и горения им.&nbsp;Воеводского</div>
+            <div className="contacts__text">Институт химической кинетики и горения им.&nbsp;В.В.&nbsp;Воеводского Сибирского отделения <br/>Российской академии наук</div>
 
             <FontAwesomeIcon className="contacts__icon" icon={faMapMarkerAlt} />
             <div className="contacts__text">630090 <br /> г. Новосибирск <br /> ул. Институтская, 3</div>
