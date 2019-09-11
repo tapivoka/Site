@@ -1,3 +1,20 @@
 import React from "react"
+import Layout from "../components/layout"
 
-export default () => <div>Hello world!</div>
+import './index.scss'
+import groupPhoto from '../../content/group-photo.jpeg';
+
+
+export default ({ data }) => {
+  return (
+    <Layout>
+      <div>
+        <h1>
+          Приветствуем вас на странице группы Молекулярной фотодинамики
+        </h1>
+
+        <img src={groupPhoto} />
+      </div>
+    </Layout>
+  )
+}
