@@ -1,0 +1,9 @@
+.publications {
+  display: grid;
+  grid-gap: 20px;
+
+  &__year {
+    margin-bottom: 0;
+    margin-top: 2rem;
+  }
+}

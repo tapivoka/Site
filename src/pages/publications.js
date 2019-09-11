@@ -1,9 +1,16 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+import "./publications.scss"
+import { PublicationCard } from "../components/publication-card"
+import { groupBy } from "../utils/group-by"
 
 export default ({ data }) => {
   let publications = data.allMarkdownRemark.edges
+
+  let groupedByYear = groupBy(publications, e => e.node.frontmatter.year)
+
+  let years = Object.keys(groupedByYear).sort().reverse();
 
   return (
     <Layout>
@@ -12,16 +19,21 @@ export default ({ data }) => {
           Публикации
         </h1>
         <div className="publications">
-          {publications.map(
-            ({ node }) =>
-              (
-                <div key={node.id}>
-                  <h3 dangerouslySetInnerHTML={{ __html: node.frontmatter.title }}/>
-                  <p> {node.frontmatter.journal} </p>
-                  <Link to={node.fields.slug}>Подробнее</Link>
-                </div>
-              ),
+          {years.map(
+            year => (
+              <>
+                <h2 className="publications__year">{year}</h2>
+                {groupedByYear[year].map(
+                  ({ node }) =>
+                    (
+                      <PublicationCard node={node} key={node.id} />
+                    ),
+                )}
+              </>
+            ),
           )}
+
+
         </div>
       </div>
     </Layout>
@@ -36,8 +48,9 @@ export const query = graphql`
                 node {
                     id
                     frontmatter {
-                        title,
+                        title
                         journal
+                        year
                     }
                     fields {
                         slug

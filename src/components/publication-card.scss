@@ -1,0 +1,16 @@
+.publication-card {
+  border: 1px solid #bbb;
+  box-shadow: 0 0 4px -1px #bbb;
+  border-left: 2px solid #d65947;
+  padding: 15px 15px;
+
+  border-radius: 5px;
+
+  &__title {
+    margin-top: 0px;
+  }
+
+  &__more-link {
+    font-size: smaller;
+  }
+}
