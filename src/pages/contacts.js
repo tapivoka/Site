@@ -2,7 +2,10 @@ import React from "react"
 import Layout from "../components/layout"
 import { Map, Placemark, YMaps } from "react-yandex-maps"
 
-import './contacts.scss'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAt, faMapMarkerAlt, faMobileAlt, faUniversity } from "@fortawesome/free-solid-svg-icons"
+
+import "./contacts.scss"
 
 export default ({ data }) => {
   return (
@@ -14,15 +17,24 @@ export default ({ data }) => {
 
         <div className="contacts">
           <div className="contacts__info">
-            г.Новосибирск <br/>
-            ул. Институтская 3
+            <FontAwesomeIcon className="contacts__icon" icon={faUniversity} />
+            <div className="contacts__text">Институт химической кинетики и горения им.&nbsp;Воеводского</div>
+
+            <FontAwesomeIcon className="contacts__icon" icon={faMapMarkerAlt} />
+            <div className="contacts__text">630090 <br /> г. Новосибирск <br /> ул. Институтская, 3</div>
+
+            <FontAwesomeIcon className="contacts__icon" icon={faMobileAlt} />
+            <div className="contacts__text">+7 (383) 330-76-23</div>
+
+            <FontAwesomeIcon className="contacts__icon" icon={faAt} />
+            <div className="contacts__text">baklanov@kinetics.nsc.ru</div>
           </div>
           <div className="contacts__map">
             <YMaps>
               <Map
                 defaultState={{
                   center: [54.844909, 83.11512],
-                  zoom: 16
+                  zoom: 16,
                 }}
                 height={400}
                 width="100%"

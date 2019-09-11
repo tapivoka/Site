@@ -4,7 +4,7 @@
   grid-gap: 20px;
 
   @media screen and (min-width: 800px) {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 4fr 6fr;
 
     &__info {
       grid-column: 1 / 2;
@@ -15,4 +15,20 @@
     }
   }
 
+  &__info {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-gap: 20px;
+    grid-auto-rows: min-content;
+    align-items: center;
+  }
+
+  &__icon {
+    grid-column: 1 / 2;
+    font-size: larger
+  }
+
+  &__text {
+    grid-column: 2 / 3;
+  }
 }
