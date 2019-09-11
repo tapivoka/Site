@@ -7,6 +7,7 @@ deploy:
   github-token: $GITHUB_TOKEN
   local_dir: public
   keep-history: true
+  fqdn: mpd.chemphys.ru
   on:
     branch: master
 script:
