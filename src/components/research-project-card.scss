@@ -4,8 +4,10 @@
   grid-template-rows: 200px 1fr;
   grid-template-areas: 'image' 'info';
   grid-template-columns: 1fr;
-
   box-shadow: 0 0 4px -1px #bbb;
+  overflow: hidden;
+  border-radius: 5px;
+  border-bottom: 2px solid #d65947;
 
   &__image-wrapper {
     grid-area: image;
