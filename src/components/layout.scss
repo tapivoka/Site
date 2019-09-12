@@ -5,6 +5,7 @@
   grid-template-rows: min-content min-content min-content;
   grid-template-columns: 1fr 100% 1fr;
   padding: 0 15px;
+  background-color: rgb(238, 238, 238);
 
   &__header {
     grid-area: header;

@@ -16,7 +16,7 @@ export default ({ data }) => {
         </h1>
 
         <div className="contacts">
-          <div className="contacts__info">
+          <div className="contacts__info card card--left">
             <FontAwesomeIcon className="contacts__icon" icon={faUniversity} />
             <div className="contacts__text">Институт химической кинетики и горения им.&nbsp;В.В.&nbsp;Воеводского Сибирского отделения <br/>Российской академии наук</div>
 
@@ -29,14 +29,14 @@ export default ({ data }) => {
             <FontAwesomeIcon className="contacts__icon" icon={faAt} />
             <div className="contacts__text">baklanov@kinetics.nsc.ru</div>
           </div>
-          <div className="contacts__map">
+          <div className="contacts__map card">
             <YMaps>
               <Map
                 defaultState={{
                   center: [54.844909, 83.11512],
                   zoom: 16,
                 }}
-                height={400}
+                height={350}
                 width="100%"
               >
                 <Placemark geometry={[54.845160, 83.116898]} />
@@ -44,6 +44,7 @@ export default ({ data }) => {
             </YMaps>
           </div>
         </div>
+
       </div>
     </Layout>
   )

@@ -13,7 +13,7 @@ export const PublicationCard = ({ node }) => {
   }
 
   return (
-    <div className="publication-card">
+    <div className="publication-card card card--left">
       <h3 className="publication-card__title" dangerouslySetInnerHTML={{ __html: node.frontmatter.title }} />
       <div>{node.frontmatter.journal}</div>
       <div className="publication-card__links">

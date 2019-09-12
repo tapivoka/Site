@@ -1,9 +1,7 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
-import cn from "classnames"
 
 import "./header.scss"
-import { useScrolled } from "../utils/use-scrolled"
 
 export const Header = () => {
   const data = useStaticQuery(
@@ -17,10 +15,8 @@ export const Header = () => {
         }
     `)
 
-  const scrolled = useScrolled(60)
-
   return (
-    <div className={cn("header", { "header--scrolled": scrolled })}>
+    <div className="header">
       <div className="header__container">
         <div className="header__title">
           <Link className="header__title-link" to="/">mpd_group</Link>

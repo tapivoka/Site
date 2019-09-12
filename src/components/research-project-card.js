@@ -5,7 +5,7 @@ import "./research-project-card.scss"
 
 export const ResearchProjectCard = ({ title, photoUrl, slug }) => {
   return (
-    <div className="research-project-card">
+    <div className="research-project-card card card--bottom">
       <div className="research-project-card__image-wrapper">
         <img className="research-project-card__image"
           src={photoUrl}

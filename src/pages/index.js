@@ -13,7 +13,7 @@ export default ({ data }) => {
           Приветствуем вас на странице группы Молекулярной фотодинамики
         </h1>
 
-        <img src={groupPhoto} />
+        <img className="card" src={groupPhoto} />
       </div>
     </Layout>
   )

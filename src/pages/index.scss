@@ -1,3 +1,18 @@
 * {
   box-sizing: border-box
 }
+
+.card {
+  box-shadow: 0 0 4px -1px #bbb;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: white;
+
+  &--left {
+    border-left: 2px solid #d65947;
+  }
+
+  &--bottom {
+    border-bottom: 2px solid #d65947;
+  }
+}

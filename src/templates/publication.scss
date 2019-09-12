@@ -1,0 +1,15 @@
+.publication {
+  padding: 20px;
+
+  &__abstract {
+    border-bottom: 1px solid #bbb;
+    margin-bottom: 10px;
+  }
+
+  &__journal {
+  }
+
+  &__authors {
+    margin-top: 15px;
+  }
+}

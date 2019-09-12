@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 
 export const MemberCard = ({ name, photoUrl, slug, position }) => {
   return (
-    <div className="member-card">
+    <div className="member-card card card--bottom">
       <div className="member-card__image-wrapper">
         <img className="member-card__image"
           src={photoUrl}
