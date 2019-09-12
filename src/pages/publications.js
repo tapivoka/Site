@@ -21,19 +21,17 @@ export default ({ data }) => {
         <div className="publications">
           {years.map(
             year => (
-              <>
-                <h2 className="publications__year" key={year}>{year}</h2>
+              <div className="publications__section" key={year}>
+                <h2 className="publications__year">{year}</h2>
                 {groupedByYear[year].map(
                   ({ node }) =>
                     (
                       <PublicationCard node={node} key={node.id} />
                     ),
                 )}
-              </>
+              </div>
             ),
           )}
-
-
         </div>
       </div>
     </Layout>

@@ -20,7 +20,7 @@ export default ({ data }) => {
               (
                 <MemberCard
                   key={node.id}
-                  name={[node.frontmatter.firstName, node.frontmatter.lastName].join(" ")}
+                  name={[node.frontmatter.lastName, node.frontmatter.firstName].join(" ")}
                   photoUrl={node.frontmatter.photoUrl}
                   slug={node.fields.slug}
                   position={node.frontmatter.position}
@@ -35,7 +35,10 @@ export default ({ data }) => {
 
 export const query = graphql`
     query {
-        allMarkdownRemark(filter: {fields: {type: {eq: "members"}}}){
+        allMarkdownRemark(
+            filter: {fields: {type: {eq: "members"}}}, 
+            sort: { fields: [frontmatter___lastName], order: [ASC] }
+        ){
             totalCount
             edges {
                 node {

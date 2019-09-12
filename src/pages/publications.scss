@@ -1,6 +1,8 @@
 .publications {
-  display: grid;
-  grid-gap: 20px;
+  &__section {
+    display: grid;
+    grid-gap: 20px;
+  }
 
   &__year {
     margin-bottom: 0;

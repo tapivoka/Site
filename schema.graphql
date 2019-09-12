@@ -337,10 +337,13 @@ type MarkdownRemarkFields {
 type MarkdownRemarkFrontmatter {
     author: String
     doi: String
+    educations: [MarkdownRemarkFrontmatterEducations]
     firstName: String
+    interests: [String]
     issue: Int
     journal: String
     lastName: String
+    members: [String]
     middleName: String
     number: Int
     pages: String
@@ -349,6 +352,14 @@ type MarkdownRemarkFrontmatter {
     title: String
     volume: Int
     year: Int
+}
+
+type MarkdownRemarkFrontmatterEducations {
+    diploma: String
+    end: Int
+    level: String
+    place: String
+    start: Int
 }
 
 type MarkdownRemarkGroupConnection {
@@ -717,10 +728,18 @@ enum FileFieldsEnum {
     childMarkdownRemark___fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___frontmatter___author
     childMarkdownRemark___frontmatter___doi
+    childMarkdownRemark___frontmatter___educations
+    childMarkdownRemark___frontmatter___educations___diploma
+    childMarkdownRemark___frontmatter___educations___end
+    childMarkdownRemark___frontmatter___educations___level
+    childMarkdownRemark___frontmatter___educations___place
+    childMarkdownRemark___frontmatter___educations___start
     childMarkdownRemark___frontmatter___firstName
+    childMarkdownRemark___frontmatter___interests
     childMarkdownRemark___frontmatter___issue
     childMarkdownRemark___frontmatter___journal
     childMarkdownRemark___frontmatter___lastName
+    childMarkdownRemark___frontmatter___members
     childMarkdownRemark___frontmatter___middleName
     childMarkdownRemark___frontmatter___number
     childMarkdownRemark___frontmatter___pages
@@ -937,10 +956,18 @@ enum MarkdownRemarkFieldsEnum {
     fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     frontmatter___author
     frontmatter___doi
+    frontmatter___educations
+    frontmatter___educations___diploma
+    frontmatter___educations___end
+    frontmatter___educations___level
+    frontmatter___educations___place
+    frontmatter___educations___start
     frontmatter___firstName
+    frontmatter___interests
     frontmatter___issue
     frontmatter___journal
     frontmatter___lastName
+    frontmatter___members
     frontmatter___middleName
     frontmatter___number
     frontmatter___pages
@@ -1573,13 +1600,28 @@ input MarkdownRemarkFilterInput {
     wordCount: MarkdownWordCountFilterInput
 }
 
+input MarkdownRemarkFrontmatterEducationsFilterInput {
+    diploma: StringQueryOperatorInput
+    end: IntQueryOperatorInput
+    level: StringQueryOperatorInput
+    place: StringQueryOperatorInput
+    start: IntQueryOperatorInput
+}
+
+input MarkdownRemarkFrontmatterEducationsFilterListInput {
+    elemMatch: MarkdownRemarkFrontmatterEducationsFilterInput
+}
+
 input MarkdownRemarkFrontmatterFilterInput {
     author: StringQueryOperatorInput
     doi: StringQueryOperatorInput
+    educations: MarkdownRemarkFrontmatterEducationsFilterListInput
     firstName: StringQueryOperatorInput
+    interests: StringQueryOperatorInput
     issue: IntQueryOperatorInput
     journal: StringQueryOperatorInput
     lastName: StringQueryOperatorInput
+    members: StringQueryOperatorInput
     middleName: StringQueryOperatorInput
     number: IntQueryOperatorInput
     pages: StringQueryOperatorInput

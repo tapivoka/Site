@@ -1,0 +1,77 @@
+.member {
+  &__info-block {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: 800px) {
+      grid-template-columns: 1fr 250px;
+    }
+  }
+
+
+  &__info {
+    padding: 20px;
+  }
+
+  &__photo-wrapper {
+    height: 250px;
+  }
+
+  &__photo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  &__position {
+    margin-top: 0;
+  }
+
+  &__interests-label {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__interest {
+    margin-bottom: 0;
+  }
+
+  &__educations {
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+  }
+
+  &__education {
+    padding-bottom: 10px;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #bbb;
+    }
+  }
+
+  &__publications {
+    display: grid;
+    grid-gap: 20px;
+  }
+}
+
+.education {
+  &__first-line {
+    display: flex;
+  }
+
+  &__place {
+    margin: 0;
+  }
+
+  &__dates {
+    margin-left: auto;
+  }
+
+  &__level {
+    color: #aaa;
+  }
+}
