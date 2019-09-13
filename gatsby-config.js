@@ -18,6 +18,19 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-plugin-react-helmet`
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Группа молекулярной фотодинамики",
+        short_name: "mpd_group",
+        start_url: "/",
+        background_color: "#eeeeee",
+        theme_color: "#d65947",
+        display: "standalone",
+        icon: "src/images/icon.png",
+      },
+    },
+    `gatsby-plugin-offline`
   ],
 }
