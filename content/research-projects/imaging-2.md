@@ -1,6 +1,6 @@
 ---
 title: Velocity map imaging 2
-photoUrl: https://www.velocitas-vmi.com/images/slider/slide1-img2.jpg
+photo: ../../images/research-projects/default.jpg
 ---
 The velocity map imaging (VMI) method allows us to take a picture of the velocities, i.e. speed and direction, 
 of the products of dynamical processes such as photodissociation and bimolecular collisions. 

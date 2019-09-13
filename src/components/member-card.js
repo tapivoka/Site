@@ -1,15 +1,15 @@
 import React from "react"
 
-import "./member-card.scss"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 
-export const MemberCard = ({ name, photoUrl, slug, position }) => {
+import "./member-card.scss"
+
+export const MemberCard = ({ name, photo, slug, position }) => {
   return (
     <div className="member-card card card--bottom">
       <div className="member-card__image-wrapper">
-        <img className="member-card__image"
-          src={photoUrl}
-        />
+        <Img className="member-card__image" fluid={photo.childImageSharp.fluid} alt={name}/>
       </div>
       <div className="member-card__info">
         <div className="member-card__name">{name}</div>

@@ -1,9 +1,9 @@
 import React from "react"
 import Layout from "../components/layout"
 import { MemberCard } from "../components/member-card"
-
-import "./members.scss"
 import { graphql } from "gatsby"
+import "./members.scss"
+
 
 export default ({ data }) => {
   let members = data.allMarkdownRemark.edges
@@ -21,7 +21,7 @@ export default ({ data }) => {
                 <MemberCard
                   key={node.id}
                   name={[node.frontmatter.lastName, node.frontmatter.firstName].join(" ")}
-                  photoUrl={node.frontmatter.photoUrl}
+                  photo={node.frontmatter.photo}
                   slug={node.fields.slug}
                   position={node.frontmatter.position}
                 />
@@ -48,7 +48,13 @@ export const query = graphql`
                         middleName
                         lastName,
                         position,
-                        photoUrl
+                        photo {
+                            childImageSharp {
+                                fluid(maxWidth: 800) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
                     }
                     fields {
                         slug

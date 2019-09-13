@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 
 import "./members.scss"
 import { PublicationCard } from "../components/publication-card"
+import Img from "gatsby-image"
 
 export default ({ data }) => {
   const member = data.member.frontmatter
@@ -32,7 +33,7 @@ export default ({ data }) => {
             }
           </div>
           <div className="member__photo-wrapper card">
-            <img className="member__photo" src={member.photoUrl} />
+            <Img className="member__photo" fluid={member.photo.childImageSharp.fluid} />
           </div>
         </div>
         {
@@ -81,7 +82,13 @@ export const query = graphql`
                 firstName
                 middleName
                 lastName
-                photoUrl
+                photo {
+                    childImageSharp {
+                        fluid(maxWidth: 800) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
                 position
                 educations {
                     start

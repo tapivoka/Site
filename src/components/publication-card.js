@@ -19,7 +19,7 @@ export const PublicationCard = ({ node }) => {
       <div className="publication-card__links">
         {
           !!node.html &&
-          <a className="publication-card__link" onClick={toogleAbstractVisibility}>Аннотация</a>
+          <button className="link-button publication-card__link" onClick={toogleAbstractVisibility}>Аннотация</button>
         }
         <Link className="publication-card__link" to={node.fields.slug}>Подробнее</Link>
       </div>

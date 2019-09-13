@@ -21,7 +21,7 @@ export default ({ data }) => {
                 <ResearchProjectCard
                   key={node.id}
                   title={node.frontmatter.title}
-                  photoUrl={node.frontmatter.photoUrl}
+                  photo={node.frontmatter.photo}
                   slug={node.fields.slug}
                 />
               ),
@@ -41,7 +41,13 @@ export const query = graphql`
                     id
                     frontmatter {
                         title,
-                        photoUrl
+                        photo {
+                            childImageSharp {
+                                fluid(maxWidth: 800) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
                     }
                     fields {
                         slug
