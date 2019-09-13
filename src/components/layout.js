@@ -1,8 +1,8 @@
 import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import { Helmet } from "react-helmet"
 
-import './layout.scss';
-import { rhythm } from "../utils/typography"
+import "./layout.scss"
 import { Header } from "./header"
 
 export default ({ children }) => {
@@ -19,9 +19,14 @@ export default ({ children }) => {
 
   return (
     <div className="layout">
-      <header className="layout__header"><Header/></header>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{data.site.siteMetadata.title}</title>
+        <meta name="description" content="Molecular photodynamics group site"/>
+      </Helmet>
+      <header className="layout__header"><Header /></header>
       <main className="layout__main">{children}</main>
-      <footer className="layout__footer"/>
+      <footer className="layout__footer" />
     </div>
   )
 }
