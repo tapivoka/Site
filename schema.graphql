@@ -340,18 +340,26 @@ type MarkdownRemarkFrontmatter {
     educations: [MarkdownRemarkFrontmatterEducations]
     firstName: String
     interests: [String]
-    issue: Int
+    issue: String
     journal: String
     lastName: String
     members: [String]
     middleName: String
-    number: Int
     pages: String
     photoUrl: String
     position: String
     title: String
-    volume: Int
-    year: Int
+    volume: String
+    year(
+        #Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
+        difference: String,
+        #Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+        formatString: String,
+        #Returns a string generated with Moment.js' `fromNow` function
+        fromNow: Boolean,
+        #Configures the locale Moment.js will use to format the date.
+        locale: String
+    ): Date
 }
 
 type MarkdownRemarkFrontmatterEducations {
@@ -561,10 +569,16 @@ type SitePluginPackageJsonPeerDependencies {
 }
 
 type SitePluginPluginOptions {
+    background_color: String
+    display: String
+    icon: String
     name: String
     path: String
     pathCheck: Boolean
     pathToConfigModule: String
+    short_name: String
+    start_url: String
+    theme_color: String
 }
 
 type SiteSiteMetadata {
@@ -741,7 +755,6 @@ enum FileFieldsEnum {
     childMarkdownRemark___frontmatter___lastName
     childMarkdownRemark___frontmatter___members
     childMarkdownRemark___frontmatter___middleName
-    childMarkdownRemark___frontmatter___number
     childMarkdownRemark___frontmatter___pages
     childMarkdownRemark___frontmatter___photoUrl
     childMarkdownRemark___frontmatter___position
@@ -969,7 +982,6 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___lastName
     frontmatter___members
     frontmatter___middleName
-    frontmatter___number
     frontmatter___pages
     frontmatter___photoUrl
     frontmatter___position
@@ -1285,10 +1297,16 @@ enum SitePageFieldsEnum {
     pluginCreator___parent___parent___children
     pluginCreator___parent___parent___id
     pluginCreator___pluginFilepath
+    pluginCreator___pluginOptions___background_color
+    pluginCreator___pluginOptions___display
+    pluginCreator___pluginOptions___icon
     pluginCreator___pluginOptions___name
     pluginCreator___pluginOptions___path
     pluginCreator___pluginOptions___pathCheck
     pluginCreator___pluginOptions___pathToConfigModule
+    pluginCreator___pluginOptions___short_name
+    pluginCreator___pluginOptions___start_url
+    pluginCreator___pluginOptions___theme_color
     pluginCreator___resolve
     pluginCreator___ssrAPIs
     pluginCreator___version
@@ -1400,10 +1418,16 @@ enum SitePluginFieldsEnum {
     parent___parent___parent___children
     parent___parent___parent___id
     pluginFilepath
+    pluginOptions___background_color
+    pluginOptions___display
+    pluginOptions___icon
     pluginOptions___name
     pluginOptions___path
     pluginOptions___pathCheck
     pluginOptions___pathToConfigModule
+    pluginOptions___short_name
+    pluginOptions___start_url
+    pluginOptions___theme_color
     resolve
     ssrAPIs
     version
@@ -1618,18 +1642,17 @@ input MarkdownRemarkFrontmatterFilterInput {
     educations: MarkdownRemarkFrontmatterEducationsFilterListInput
     firstName: StringQueryOperatorInput
     interests: StringQueryOperatorInput
-    issue: IntQueryOperatorInput
+    issue: StringQueryOperatorInput
     journal: StringQueryOperatorInput
     lastName: StringQueryOperatorInput
     members: StringQueryOperatorInput
     middleName: StringQueryOperatorInput
-    number: IntQueryOperatorInput
     pages: StringQueryOperatorInput
     photoUrl: StringQueryOperatorInput
     position: StringQueryOperatorInput
     title: StringQueryOperatorInput
-    volume: IntQueryOperatorInput
-    year: IntQueryOperatorInput
+    volume: StringQueryOperatorInput
+    year: DateQueryOperatorInput
 }
 
 input MarkdownRemarkSortInput {
@@ -1750,10 +1773,16 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 }
 
 input SitePluginPluginOptionsFilterInput {
+    background_color: StringQueryOperatorInput
+    display: StringQueryOperatorInput
+    icon: StringQueryOperatorInput
     name: StringQueryOperatorInput
     path: StringQueryOperatorInput
     pathCheck: BooleanQueryOperatorInput
     pathToConfigModule: StringQueryOperatorInput
+    short_name: StringQueryOperatorInput
+    start_url: StringQueryOperatorInput
+    theme_color: StringQueryOperatorInput
 }
 
 input SitePluginSortInput {
