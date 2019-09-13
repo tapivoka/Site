@@ -2,13 +2,23 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
+import './research-projects.scss';
+
 export default ({ data }) => {
-  const researchProject = data.markdownRemark
+  const {
+    html,
+    frontmatter: {
+      title
+    }
+  } = data.markdownRemark;
+
   return (
     <Layout>
       <div>
-        <h1>{researchProject.frontmatter.title} </h1>
-        <div dangerouslySetInnerHTML={{ __html: researchProject.html }} />
+        <h1 dangerouslySetInnerHTML={{ __html: title }} />
+        <div className="research-project card card--left">
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
       </div>
     </Layout>
   )
