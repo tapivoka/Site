@@ -1,8 +1,18 @@
+const ru = require("./src/locales/ru.json")
+const en = require("./src/locales/en.json")
+
 module.exports = {
-  siteMetadata: {
-    title: `Группа молекулярной фотодинамики`,
-  },
+  siteMetadata: {},
   plugins: [
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        path: `${__dirname}/src/locales`,
+        languages: [`en`, `ru`],
+        defaultLanguage: `ru`,
+        redirect: false,
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -25,22 +35,33 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-        omitGoogleFont: true
+        omitGoogleFont: true,
       },
     },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Группа молекулярной фотодинамики",
+        lang: "ru",
+        name: ru.meta.title,
+        description: ru.meta.description,
         short_name: "mpd_group",
         start_url: "/",
         background_color: "#eeeeee",
         theme_color: "#d65947",
         display: "standalone",
         icon: "src/images/icon.png",
+        localize: [
+          {
+            start_url: `/en/`,
+            lang: `en`,
+            name: en.meta.title,
+            description: en.meta.description,
+          },
+        ],
+
       },
     },
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
   ],
 }

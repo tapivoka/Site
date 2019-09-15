@@ -1,34 +1,38 @@
 import React from "react"
-import Layout from "../components/layout"
-
-import './index.scss'
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import { injectIntl, FormattedMessage } from "gatsby-plugin-intl"
 
+import Layout from "../components/layout"
 
-export default ({ data }) => {
+import "./index.scss"
+
+export default injectIntl(({ data, intl }) => {
   return (
     <Layout>
       <div>
         <h1>
-          Приветствуем вас на странице группы Молекулярной фотодинамики
+          <FormattedMessage id="index-page.header" />
         </h1>
-        <Img className="card" fluid={data.file.childImageSharp.fluid} alt="Фото группы"/>
+        <Img className="card"
+          fluid={data.file.childImageSharp.fluid}
+          alt={intl.formatMessage({ id: "index-page.image-alt" })}
+        />
       </div>
     </Layout>
   )
-}
+})
 
 
 export const query = graphql`
-   query {
-       file(relativePath: { eq: "group-photo.jpeg" }) {
-           childImageSharp {
-               fluid {
-                   ...GatsbyImageSharpFluid
-               }
-           }
-       }
-   }
+    query {
+        file(relativePath: { eq: "group-photo.jpeg" }) {
+            childImageSharp {
+                fluid {
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+    }
 `
 

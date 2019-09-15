@@ -1,24 +1,29 @@
-import { Link } from "gatsby"
 import React from "react"
+import { FormattedMessage, Link } from "gatsby-plugin-intl"
 
 import "./nav.scss"
+
+const pages = [
+  "research-projects",
+  "members",
+  "publications",
+  "contacts",
+]
 
 export const Nav = () => {
   return (
     <nav className="nav">
       <ul className="nav__list">
-        <li className="nav__item">
-          <Link className="nav__link" to="/research-projects">Исследования</Link>
-        </li>
-        <li className="nav__item">
-          <Link className="nav__link" to="/members">Сотрудники</Link>
-        </li>
-        <li className="nav__item">
-          <Link className="nav__link" to="/publications">Публикации</Link>
-        </li>
-        <li className="nav__item">
-          <Link className="nav__link" to="/contacts">Контакты</Link>
-        </li>
+        {
+          pages.map(e => (
+              <li key={e} className="nav__item">
+                <Link className="nav__link" to={`/${e}/`}>
+                  <FormattedMessage id={`pages.${e}`} />
+                </Link>
+              </li>
+            ),
+          )
+        }
       </ul>
     </nav>
   )

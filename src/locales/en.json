@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "Molecular photodynamics group",
+    "description": "Molecular photodynamics group site"
+  },
+  "pages": {
+    "research-projects": "Research projects",
+    "members": "Members",
+    "publications": "Publications",
+    "contacts": "Contacts",
+    "404": "Page not found"
+  },
+  "common": {
+    "abstract": "Abstract",
+    "more-details": "More details"
+  },
+  "index-page": {
+    "header": "Welcome to the page of the Molecular photodynamics group",
+    "image-alt": "Group photo"
+  },
+  "contacts-page": {
+    "name": "Voevodsky Institute of Chemical Kinetics and Combustion of the Siberian Branch of the Russian Academy of Sciences",
+    "address": "Institutskaya 3 <br/> Novosibirsk <br/> Russia <br/> 630090",
+    "phone-number": "+7 (383) 330-76-23",
+    "email": "baklanov@kinetics.nsc.ru"
+  },
+  "member-page": {
+    "interests": "Research interests:",
+    "education": "Education",
+    "now": "now",
+    "publications": "Publications"
+  }
+}

@@ -1,8 +1,8 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, FormattedMessage } from "gatsby-plugin-intl"
+import Img from "gatsby-image"
 
 import "./research-project-card.scss"
-import Img from "gatsby-image"
 
 export const ResearchProjectCard = ({ title, photo, slug }) => {
   return (
@@ -12,7 +12,9 @@ export const ResearchProjectCard = ({ title, photo, slug }) => {
       </div>
       <div className="research-project-card__info">
         <div className="research-project-card__title">{title}</div>
-        <Link className="research-project-card__more-link" to={slug}>Подробнее</Link>
+        <Link className="research-project-card__more-link" to={slug}>
+          <FormattedMessage id="common.more-details" />
+        </Link>
       </div>
     </div>
   )

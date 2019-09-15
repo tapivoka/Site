@@ -1,4 +1,6 @@
-import React  from "react"
+import React from "react"
+import { FormattedMessage } from "gatsby-plugin-intl"
+
 import Layout from "../components/layout"
 
 export default () => {
@@ -6,7 +8,7 @@ export default () => {
     <Layout>
       <div>
         <h1>
-          Страница не найдена
+          <FormattedMessage id="pages.404" />
         </h1>
       </div>
     </Layout>

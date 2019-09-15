@@ -1,17 +1,19 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { FormattedMessage } from "gatsby-plugin-intl"
+import Img from "gatsby-image"
+
 import Layout from "../components/layout"
+import { PublicationCard } from "../components/publication-card"
 
 import "./members.scss"
-import { PublicationCard } from "../components/publication-card"
-import Img from "gatsby-image"
 
 export default ({ data }) => {
   const member = data.member.frontmatter
   const publications = data.publications.edges
 
-  let educations = member.educations || [];
-  educations = educations.sort((a, b) => +b.start - +a.start);
+  let educations = member.educations || []
+  educations = educations.sort((a, b) => +b.start - +a.start)
 
   return (
     <Layout>
@@ -23,7 +25,9 @@ export default ({ data }) => {
             {
               member.interests &&
               <div className="member__interests">
-                <h4 className="member__interests-label">Область интересов:</h4>
+                <h4 className="member__interests-label">
+                  <FormattedMessage id="member-page.interests" />
+                </h4>
                 <ul className="member__interests-list">
                   {member.interests.map((e, i) => (
                     <li className="member__interest" key={i}>{e}</li>
@@ -39,13 +43,21 @@ export default ({ data }) => {
         {
           educations.length > 0 &&
           <>
-            <h2>Образование</h2>
+            <h2>
+              <FormattedMessage id="member-page.education" />
+            </h2>
             <div className="member__educations card card--left">
               {educations.map((e, i) => (
                 <div key={i} className="member__education education">
                   <div className="education__first-line">
                     <h4 className="education__place">{e.place}</h4>
-                    <div className="education__dates">{e.start} - {e.end || "настоящее время"}</div>
+                    {
+                      e.start
+                      &&
+                      <div className="education__dates">
+                        {e.start} - {e.end || <FormattedMessage id="member-page.now" />}
+                      </div>
+                    }
                   </div>
                   <div className="education__level">{e.level}</div>
                   <div className="education__diploma" dangerouslySetInnerHTML={{ __html: e.diploma }} />
@@ -58,7 +70,9 @@ export default ({ data }) => {
           publications.length > 0
           &&
           <>
-            <h2>Публикации</h2>
+            <h2>
+              <FormattedMessage id="member-page.publications" />
+            </h2>
             <div className="member__publications">
               {publications.map(
                 ({ node }) =>

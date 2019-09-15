@@ -1,6 +1,5 @@
 import React from "react"
-
-import { Link } from "gatsby"
+import { Link, FormattedMessage } from "gatsby-plugin-intl"
 import Img from "gatsby-image"
 
 import "./member-card.scss"
@@ -14,7 +13,9 @@ export const MemberCard = ({ name, photo, slug, position }) => {
       <div className="member-card__info">
         <div className="member-card__name">{name}</div>
         <div className="member-card__position">{position}</div>
-        <Link className="member-card__more-link" to={slug}>Подробнее</Link>
+        <Link className="member-card__more-link" to={slug}>
+          <FormattedMessage id="common.more-details" />
+        </Link>
       </div>
     </div>
   )

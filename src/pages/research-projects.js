@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { FormattedMessage } from "gatsby-plugin-intl"
 
 import Layout from "../components/layout"
 import { ResearchProjectCard } from "../components/research-project-card"
+
 import "./research-projects.scss"
 
 export default ({ data }) => {
@@ -12,7 +14,7 @@ export default ({ data }) => {
     <Layout>
       <div>
         <h1>
-          Исследования
+          <FormattedMessage id="pages.research-projects" />
         </h1>
         <div className="research-projects">
           {researchProjects.map(
