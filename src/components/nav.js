@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl"
 import { Link } from "../intl/link"
 
 import "./nav.scss"
+import { LanguageSwitcher } from "./language-switcher"
 
 const pages = [
   "research-projects",
@@ -25,6 +26,7 @@ export const Nav = () => {
             ),
           )
         }
+        <li className="nav__item"><LanguageSwitcher /></li>
       </ul>
     </nav>
   )
