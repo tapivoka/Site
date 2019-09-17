@@ -1,19 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
 import { PublicationCard } from "../components/publication-card"
 import { groupBy } from "../utils/group-by"
+import { getLocalizedNodes } from "../intl/utils"
+import { defaultLocale } from "../intl/locales"
 
 import "./publications.scss"
 
-export default ({ data }) => {
-  let publications = data.allMarkdownRemark.edges
+export default ({ data, pageContext: { locale } }) => {
+  const nodes = data.allMarkdownRemark.edges.map(e => e.node)
+  const localizedNodes = getLocalizedNodes(nodes, locale, defaultLocale)
 
-  let groupedByYear = groupBy(publications, e => e.node.frontmatter.year)
-
-  let years = Object.keys(groupedByYear).sort().reverse()
+  const groupedByYear = groupBy(localizedNodes, e => e.frontmatter.year)
+  const years = Object.keys(groupedByYear).sort().reverse()
 
   return (
     <Layout>
@@ -27,7 +29,7 @@ export default ({ data }) => {
               <div className="publications__section" key={year}>
                 <h2 className="publications__year">{year}</h2>
                 {groupedByYear[year].map(
-                  ({ node }) =>
+                  node =>
                     (
                       <PublicationCard node={node} key={node.id} />
                     ),
@@ -56,6 +58,7 @@ export const query = graphql`
                     }
                     fields {
                         slug
+                        locale
                     }
                 }
             }

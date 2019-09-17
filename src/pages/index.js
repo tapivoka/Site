@@ -1,13 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import { injectIntl, FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage, useIntl } from "react-intl"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
 
 import "./index.scss"
 
-export default injectIntl(({ data, intl }) => {
+export default ({ data }) => {
+  const { formatMessage } = useIntl()
+
   return (
     <Layout>
       <div>
@@ -16,13 +18,12 @@ export default injectIntl(({ data, intl }) => {
         </h1>
         <Img className="card"
           fluid={data.file.childImageSharp.fluid}
-          alt={intl.formatMessage({ id: "index-page.image-alt" })}
+          alt={formatMessage({ id: "index-page.image-alt" })}
         />
       </div>
     </Layout>
   )
-})
-
+}
 
 export const query = graphql`
     query {

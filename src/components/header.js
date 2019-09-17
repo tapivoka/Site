@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby-plugin-intl"
+import { Link } from "../intl/link"
 
 import { Nav } from "./nav"
 

@@ -1,7 +1,7 @@
 import React from "react"
-import { FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
 
 export default () => {
   return (

@@ -1,14 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
 import { ResearchProjectCard } from "../components/research-project-card"
+import { getLocalizedNodes } from "../intl/utils"
+import { defaultLocale } from "../intl/locales"
 
 import "./research-projects.scss"
 
-export default ({ data }) => {
-  let researchProjects = data.allMarkdownRemark.edges
+export default ({ data, pageContext: { locale } }) => {
+  const nodes = data.allMarkdownRemark.edges.map(e => e.node)
+  const localizedNodes = getLocalizedNodes(nodes, locale, defaultLocale)
 
   return (
     <Layout>
@@ -17,8 +20,8 @@ export default ({ data }) => {
           <FormattedMessage id="pages.research-projects" />
         </h1>
         <div className="research-projects">
-          {researchProjects.map(
-            ({ node }) =>
+          {localizedNodes.map(
+            node =>
               (
                 <ResearchProjectCard
                   key={node.id}
@@ -53,6 +56,7 @@ export const query = graphql`
                     }
                     fields {
                         slug
+                        locale
                     }
                 }
             }

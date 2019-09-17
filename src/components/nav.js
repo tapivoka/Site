@@ -1,5 +1,6 @@
 import React from "react"
-import { FormattedMessage, Link } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
+import { Link } from "../intl/link"
 
 import "./nav.scss"
 

@@ -4,15 +4,6 @@ const en = require("./src/locales/en.json")
 module.exports = {
   siteMetadata: {},
   plugins: [
-    {
-      resolve: `gatsby-plugin-intl`,
-      options: {
-        path: `${__dirname}/src/locales`,
-        languages: [`en`, `ru`],
-        defaultLanguage: `ru`,
-        redirect: false,
-      },
-    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {

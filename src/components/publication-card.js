@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import cn from "classnames"
-import { FormattedMessage, Link } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
+import { Link } from "../intl/link"
 
 import "./publication-card.scss"
 

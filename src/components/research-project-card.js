@@ -1,5 +1,6 @@
 import React from "react"
-import { Link, FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
+import { Link } from "../intl/link"
 import Img from "gatsby-image"
 
 import "./research-project-card.scss"

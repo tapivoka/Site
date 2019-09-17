@@ -1,16 +1,23 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage } from "react-intl"
 import Img from "gatsby-image"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
 import { PublicationCard } from "../components/publication-card"
+import { getLocalizedNodes } from "../intl/utils"
+import { defaultLocale } from "../intl/locales"
 
 import "./members.scss"
 
-export default ({ data }) => {
-  const member = data.member.frontmatter
-  const publications = data.publications.edges
+export default ({ data, pageContext: { locale } }) => {
+  const memberNodes = data.allMarkdownRemark.edges.map(e => e.node)
+  const memberLocalizedNodes = getLocalizedNodes(memberNodes, locale, defaultLocale)
+
+  const member = memberLocalizedNodes.shift().frontmatter
+
+  const publicationsNodes = data.publications.edges.map(e => e.node)
+  const publications = getLocalizedNodes(publicationsNodes, locale, defaultLocale)
 
   let educations = member.educations || []
   educations = educations.sort((a, b) => +b.start - +a.start)
@@ -75,7 +82,7 @@ export default ({ data }) => {
             </h2>
             <div className="member__publications">
               {publications.map(
-                ({ node }) =>
+                node =>
                   (
                     <PublicationCard node={node} key={node.id} />
                   ),
@@ -90,28 +97,36 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-    query($name: String!, $type: String!) {
-        member: markdownRemark(fields: { name: { eq: $name }, type: { eq: $type} }) {
-            frontmatter {
-                firstName
-                middleName
-                lastName
-                photo {
-                    childImageSharp {
-                        fluid(maxWidth: 800) {
-                            ...GatsbyImageSharpFluid
+    query($slug: String!, $name: String!) {
+        allMarkdownRemark(filter: { fields: { slug: { eq: $slug } }}) {
+            edges {
+                node {
+                    frontmatter {
+                        firstName
+                        middleName
+                        lastName
+                        photo {
+                            childImageSharp {
+                                fluid(maxWidth: 800) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
                         }
+                        position
+                        educations {
+                            start
+                            end
+                            level
+                            place
+                            diploma
+                        }
+                        interests
+                    }
+                    fields {
+                        slug
+                        locale
                     }
                 }
-                position
-                educations {
-                    start
-                    end
-                    level
-                    place
-                    diploma
-                }
-                interests
             }
         }
         publications: allMarkdownRemark(filter: {
@@ -131,6 +146,7 @@ export const query = graphql`
                     }
                     fields {
                         slug
+                        locale
                     }
                 }
             }

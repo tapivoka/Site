@@ -1,15 +1,14 @@
 import React, { useState } from "react"
-import { injectIntl, FormattedHTMLMessage, FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedHTMLMessage, FormattedMessage } from "react-intl"
 import { Map, Placemark, YMaps } from "react-yandex-maps"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAt, faMapMarkerAlt, faMobileAlt, faUniversity } from "@fortawesome/free-solid-svg-icons"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
 
 import "./contacts.scss"
 
-export default injectIntl(({ intl }) => {
-  console.log(intl);
+export default ({ pageContext: { locale } }) => {
   const [mapLoaded, setMapLoaded] = useState(false)
 
   const handleMapLoaded = () => setMapLoaded(true)
@@ -49,7 +48,7 @@ export default injectIntl(({ intl }) => {
               &&
               <div className="loader" />
             }
-            <YMaps query={{ lang: intl.locale }}>
+            <YMaps query={{ lang: locale }}>
               <Map
                 onLoad={handleMapLoaded}
                 defaultState={{
@@ -68,4 +67,4 @@ export default injectIntl(({ intl }) => {
       </div>
     </Layout>
   )
-})
+}

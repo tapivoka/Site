@@ -478,6 +478,7 @@ type MarkdownRemarkEdge {
 }
 
 type MarkdownRemarkFields {
+    locale: String
     name: String
     slug: String
     type: String
@@ -494,6 +495,7 @@ type MarkdownRemarkFrontmatter {
     lastName: String
     members: [String]
     middleName: String
+    number: String
     pages: String
     photo: File
     position: String
@@ -555,7 +557,7 @@ type Query {
     file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, childMarkdownRemark: MarkdownRemarkFilterInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: FloatQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
     imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput, resolutions: ImageSharpResolutionsFilterInput, sizes: ImageSharpSizesFilterInput): ImageSharp
     markdownRemark(children: NodeFilterListInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, fields: MarkdownRemarkFieldsFilterInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MarkdownRemarkFrontmatterFilterInput, headings: MarkdownHeadingFilterListInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, rawMarkdownBody: StringQueryOperatorInput, tableOfContents: StringQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MarkdownWordCountFilterInput): MarkdownRemark
-    site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
+    site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput): Site
     sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
     sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
 }
@@ -579,7 +581,6 @@ type Site implements Node {
     pathPrefix: String
     polyfill: Boolean
     port: Int
-    siteMetadata: SiteSiteMetadata
 }
 
 type SiteConnection {
@@ -632,6 +633,7 @@ type SitePageConnection {
 }
 
 type SitePageContext {
+    locale: String
     name: String
     slug: String
     type: String
@@ -721,9 +723,13 @@ type SitePluginPackageJsonPeerDependencies {
 
 type SitePluginPluginOptions {
     background_color: String
+    description: String
     display: String
     icon: String
+    lang: String
+    localize: [SitePluginPluginOptionsLocalize]
     name: String
+    omitGoogleFont: Boolean
     path: String
     pathCheck: Boolean
     pathToConfigModule: String
@@ -732,8 +738,11 @@ type SitePluginPluginOptions {
     theme_color: String
 }
 
-type SiteSiteMetadata {
-    title: String
+type SitePluginPluginOptionsLocalize {
+    description: String
+    lang: String
+    name: String
+    start_url: String
 }
 
 enum DirectoryFieldsEnum {
@@ -978,6 +987,7 @@ enum FileFieldsEnum {
     childMarkdownRemark___children___parent___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___excerptAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    childMarkdownRemark___fields___locale @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fields___name @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fields___type @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -997,6 +1007,7 @@ enum FileFieldsEnum {
     childMarkdownRemark___frontmatter___lastName
     childMarkdownRemark___frontmatter___members
     childMarkdownRemark___frontmatter___middleName
+    childMarkdownRemark___frontmatter___number
     childMarkdownRemark___frontmatter___pages
     childMarkdownRemark___frontmatter___photo___absolutePath
     childMarkdownRemark___frontmatter___photo___accessTime
@@ -1409,6 +1420,7 @@ enum MarkdownRemarkFieldsEnum {
     children___parent___parent___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     excerptAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fields___locale @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fields___name @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fields___type @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1428,6 +1440,7 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___lastName
     frontmatter___members
     frontmatter___middleName
+    frontmatter___number
     frontmatter___pages
     frontmatter___photo___absolutePath
     frontmatter___photo___accessTime
@@ -1655,7 +1668,6 @@ enum SiteFieldsEnum {
     pathPrefix
     polyfill
     port
-    siteMetadata___title
 }
 
 enum SitePageFieldsEnum {
@@ -1701,6 +1713,7 @@ enum SitePageFieldsEnum {
     component
     componentChunkName
     componentPath
+    context___locale
     context___name
     context___slug
     context___type
@@ -1813,9 +1826,17 @@ enum SitePageFieldsEnum {
     pluginCreator___parent___parent___id
     pluginCreator___pluginFilepath
     pluginCreator___pluginOptions___background_color
+    pluginCreator___pluginOptions___description
     pluginCreator___pluginOptions___display
     pluginCreator___pluginOptions___icon
+    pluginCreator___pluginOptions___lang
+    pluginCreator___pluginOptions___localize
+    pluginCreator___pluginOptions___localize___description
+    pluginCreator___pluginOptions___localize___lang
+    pluginCreator___pluginOptions___localize___name
+    pluginCreator___pluginOptions___localize___start_url
     pluginCreator___pluginOptions___name
+    pluginCreator___pluginOptions___omitGoogleFont
     pluginCreator___pluginOptions___path
     pluginCreator___pluginOptions___pathCheck
     pluginCreator___pluginOptions___pathToConfigModule
@@ -1934,9 +1955,17 @@ enum SitePluginFieldsEnum {
     parent___parent___parent___id
     pluginFilepath
     pluginOptions___background_color
+    pluginOptions___description
     pluginOptions___display
     pluginOptions___icon
+    pluginOptions___lang
+    pluginOptions___localize
+    pluginOptions___localize___description
+    pluginOptions___localize___lang
+    pluginOptions___localize___name
+    pluginOptions___localize___start_url
     pluginOptions___name
+    pluginOptions___omitGoogleFont
     pluginOptions___path
     pluginOptions___pathCheck
     pluginOptions___pathToConfigModule
@@ -2211,6 +2240,7 @@ input MarkdownHeadingFilterListInput {
 }
 
 input MarkdownRemarkFieldsFilterInput {
+    locale: StringQueryOperatorInput
     name: StringQueryOperatorInput
     slug: StringQueryOperatorInput
     type: StringQueryOperatorInput
@@ -2258,6 +2288,7 @@ input MarkdownRemarkFrontmatterFilterInput {
     lastName: StringQueryOperatorInput
     members: StringQueryOperatorInput
     middleName: StringQueryOperatorInput
+    number: StringQueryOperatorInput
     pages: StringQueryOperatorInput
     photo: FileFilterInput
     position: StringQueryOperatorInput
@@ -2310,10 +2341,10 @@ input SiteFilterInput {
     pathPrefix: StringQueryOperatorInput
     polyfill: BooleanQueryOperatorInput
     port: IntQueryOperatorInput
-    siteMetadata: SiteSiteMetadataFilterInput
 }
 
 input SitePageContextFilterInput {
+    locale: StringQueryOperatorInput
     name: StringQueryOperatorInput
     slug: StringQueryOperatorInput
     type: StringQueryOperatorInput
@@ -2397,9 +2428,13 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 
 input SitePluginPluginOptionsFilterInput {
     background_color: StringQueryOperatorInput
+    description: StringQueryOperatorInput
     display: StringQueryOperatorInput
     icon: StringQueryOperatorInput
+    lang: StringQueryOperatorInput
+    localize: SitePluginPluginOptionsLocalizeFilterListInput
     name: StringQueryOperatorInput
+    omitGoogleFont: BooleanQueryOperatorInput
     path: StringQueryOperatorInput
     pathCheck: BooleanQueryOperatorInput
     pathToConfigModule: StringQueryOperatorInput
@@ -2408,13 +2443,20 @@ input SitePluginPluginOptionsFilterInput {
     theme_color: StringQueryOperatorInput
 }
 
+input SitePluginPluginOptionsLocalizeFilterInput {
+    description: StringQueryOperatorInput
+    lang: StringQueryOperatorInput
+    name: StringQueryOperatorInput
+    start_url: StringQueryOperatorInput
+}
+
+input SitePluginPluginOptionsLocalizeFilterListInput {
+    elemMatch: SitePluginPluginOptionsLocalizeFilterInput
+}
+
 input SitePluginSortInput {
     fields: [SitePluginFieldsEnum]
     order: [SortOrderEnum] = [ASC]
-}
-
-input SiteSiteMetadataFilterInput {
-    title: StringQueryOperatorInput
 }
 
 input SiteSortInput {

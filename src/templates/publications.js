@@ -1,11 +1,16 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
+import { Layout } from "../components/layout"
+import { getLocalizedNodes } from "../intl/utils"
+import { defaultLocale } from "../intl/locales"
 
-import "./publication.scss"
+import "./publications.scss"
 
-export default ({ data }) => {
+export default ({ data, pageContext: { locale } }) => {
+  const publicationNodes = data.allMarkdownRemark.edges.map(e => e.node)
+  const publication = getLocalizedNodes(publicationNodes, locale, defaultLocale).shift()
+
   const {
     html,
     frontmatter: {
@@ -17,7 +22,7 @@ export default ({ data }) => {
       doi,
       issue
     }
-  } = data.markdownRemark;
+  } = publication;
 
   return (
     <Layout>
@@ -33,17 +38,25 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-    query($name: String!, $type: String!) {
-        markdownRemark(fields: { name: { eq: $name }, type: { eq: $type} }) {
-            html
-            frontmatter {
-                title
-                journal
-                year
-                volume
-                issue
-                author
-                doi
+    query($slug: String!) {
+        allMarkdownRemark(filter: { fields: { slug: { eq: $slug }}}) {
+            edges {
+                node {
+                    html
+                    frontmatter {
+                        title
+                        journal
+                        year
+                        volume
+                        issue
+                        author
+                        doi
+                    }
+                    fields {
+                        slug
+                        locale
+                    }
+                }                
             }
         }
     }

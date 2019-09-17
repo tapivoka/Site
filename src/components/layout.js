@@ -1,11 +1,13 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import { injectIntl } from "gatsby-plugin-intl"
+import { useIntl } from "react-intl"
 
 import "./layout.scss"
 import { Header } from "./header"
 
-export default injectIntl(({ children, intl }) => {
+export const Layout = ({ children }) => {
+  const intl = useIntl();
+
   return (
     <div className="layout">
       <Helmet>
@@ -19,4 +21,4 @@ export default injectIntl(({ children, intl }) => {
       <footer className="layout__footer" />
     </div>
   )
-})
+}
