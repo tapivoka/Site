@@ -33,6 +33,12 @@ export default ({ element, props }) => {
 
   const { locale } = props.pageContext
 
+  if (typeof window !== "undefined") {
+    window.___gatsbyIntl = {
+      locale,
+    }
+  }
+
   let messages = getMessages(locale)
 
   return (

@@ -23,11 +23,22 @@ export function getLocalizedNodes(nodes, locale, defaultLocale) {
   return result
 }
 
+export const navigate = (to, options) => {
+  if (typeof window === "undefined") {
+    return
+  }
+
+  const { locale } = window.___gatsbyIntl
+
+  const link = locale !== defaultLocale ? `/${locale}${to}` : `${to}`
+
+  gatsbyNavigate(link, options)
+}
+
 export const changeLocale = (locale, to) => {
   const removeLocalePart = pathname => {
-    console.log(pathname)
     const firstPart = pathname.split("/")[1]
-console.log(firstPart)
+
     if (locales.indexOf(firstPart) !== -1) {
       return pathname.replace(`/${firstPart}`, ``)
     } else {
