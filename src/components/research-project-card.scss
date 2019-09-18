@@ -28,10 +28,4 @@
   &__more-link {
     font-size: smaller;
   }
-
-  &:hover {
-    .research-project-card__image {
-      transform: scaleX(1.1) scaleY(1.1);
-    }
-  }
 }

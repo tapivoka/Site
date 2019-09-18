@@ -33,10 +33,4 @@
   &__more-link {
     font-size: smaller;
   }
-
-  &:hover {
-    .member-card__image {
-      transform: scaleX(1.1) scaleY(1.1);
-    }
-  }
 }

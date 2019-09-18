@@ -8,19 +8,19 @@ import "./publication-card.scss"
 export const PublicationCard = ({ node }) => {
   const [isAbstractVisible, setAbstractVisibility] = useState(false)
 
-  const toogleAbstractVisibility = () => {
+  const toggleAbstractVisibility = () => {
     setAbstractVisibility(!isAbstractVisible)
   }
 
   return (
-    <div className="publication-card card card--left">
+    <div className="publication-card card card--left card--with-hover">
       <h3 className="publication-card__title" dangerouslySetInnerHTML={{ __html: node.frontmatter.title }} />
       <div>{node.frontmatter.journal}</div>
       <div className="publication-card__links">
         {
           !!node.html &&
           <button className="link-button publication-card__link"
-            onClick={toogleAbstractVisibility}
+            onClick={toggleAbstractVisibility}
           >
             <FormattedMessage id="common.abstract" />
           </button>

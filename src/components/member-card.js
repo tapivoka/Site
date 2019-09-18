@@ -7,7 +7,7 @@ import "./member-card.scss"
 
 export const MemberCard = ({ name, photo, slug, position }) => {
   return (
-    <div className="member-card card card--bottom">
+    <div className="member-card card card--bottom card--with-hover">
       <div className="member-card__image-wrapper">
         <Img className="member-card__image" fluid={photo.childImageSharp.fluid} alt={name}/>
       </div>

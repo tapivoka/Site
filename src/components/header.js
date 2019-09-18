@@ -12,7 +12,7 @@ import "./header.scss"
 export const Header = () => {
   const [isNavVisible, setNavVisibility] = useState(false)
 
-  const toogleNavVisibility = () => {
+  const toggleNavVisibility = () => {
     setNavVisibility(!isNavVisible)
   }
 
@@ -22,7 +22,7 @@ export const Header = () => {
         <div className="header__title">
           <Link className="header__title-link" to="/">mpd_group</Link>
         </div>
-        <div className="header__menu-icon" onClick={toogleNavVisibility}>
+        <div className="header__menu-icon" onClick={toggleNavVisibility}>
           <FontAwesomeIcon icon={isNavVisible ? faTimes : faBars} />
 
 
