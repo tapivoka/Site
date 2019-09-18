@@ -10,6 +10,8 @@
   &__header {
     grid-area: header;
     z-index: 1;
+    position: sticky;
+    top: 0;
   }
 
   &__main {
@@ -24,11 +26,6 @@
   @media screen and (min-width: 800px) {
     grid-template-rows: 60px auto 60px;
     grid-template-columns: 1fr 800px 1fr;
-
-    &__header {
-      position: sticky;
-      top: 0;
-    }
   }
 }
 
