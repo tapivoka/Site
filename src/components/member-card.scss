@@ -6,13 +6,14 @@
 
   &__image-wrapper {
     grid-area: image;
+    overflow: hidden;
   }
 
   &__image {
     object-fit: cover;
     height: 100%;
     width: 100%;
-    margin-bottom: 0;
+    transition: all 0.1s ease-in;
   }
 
   &__info {
@@ -31,5 +32,11 @@
 
   &__more-link {
     font-size: smaller;
+  }
+
+  &:hover {
+    .member-card__image {
+      transform: scaleX(1.1) scaleY(1.1);
+    }
   }
 }
