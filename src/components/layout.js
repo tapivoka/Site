@@ -11,8 +11,7 @@ export const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Helmet>
-        <html lang={intl.locale} />
-        <meta charSet="utf-8" />
+        <html lang={intl.locale} dir="ltr"/>
         <title>{ intl.formatMessage({ id: "meta.title"})}</title>
         <meta name="description" content={ intl.formatMessage({ id: "meta.description"})} />
       </Helmet>

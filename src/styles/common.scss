@@ -6,6 +6,15 @@ body {
   min-width: 320px;
 }
 
+a {
+  background-image: none;
+  color: #d65947;
+
+  &:hover {
+    color: black;
+  }
+}
+
 
 .link-button {
   background-color: transparent;
