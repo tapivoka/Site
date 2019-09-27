@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { FormattedMessage } from "react-intl"
+import { useIntl } from "react-intl"
 
 import { Layout } from "../components/layout"
 import { PublicationCard } from "../components/publication-card"
@@ -17,12 +17,13 @@ export default ({ data, pageContext: { locale } }) => {
   const groupedByYear = groupBy(localizedNodes, e => e.frontmatter.year)
   const years = Object.keys(groupedByYear).sort().reverse()
 
+  const { formatMessage } = useIntl()
+  const title = formatMessage({ id: "pages.publications" })
+
   return (
-    <Layout>
+    <Layout title={title}>
       <section>
-        <h1>
-          <FormattedMessage id="pages.publications" />
-        </h1>
+        <h1>{title}</h1>
         <div className="publications">
           {years.map(
             year => (

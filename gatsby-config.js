@@ -2,7 +2,9 @@ const ru = require("./src/locales/ru.json")
 const en = require("./src/locales/en.json")
 
 module.exports = {
-  siteMetadata: {},
+  siteMetadata: {
+    siteUrl: `https://mpd.chemphys.ru`,
+  },
   plugins: [
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -29,6 +31,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

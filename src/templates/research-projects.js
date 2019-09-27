@@ -13,13 +13,14 @@ export default ({ data, pageContext: { locale } }) => {
 
   const {
     html,
+    excerpt,
     frontmatter: {
       title,
     },
   } = researchProject
 
   return (
-    <Layout>
+    <Layout title={title} description={excerpt}>
       <article className="research-project">
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         <div className="research-project__card card card--left">
@@ -36,6 +37,7 @@ export const query = graphql`
             edges {
                 node {
                     html
+                    excerpt,
                     frontmatter {
                         title
                     }

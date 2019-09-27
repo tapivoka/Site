@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl"
+import { FormattedHTMLMessage, FormattedMessage, useIntl } from "react-intl"
 import { Map, Placemark, YMaps } from "react-yandex-maps"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAt, faMapMarkerAlt, faMobileAlt, faUniversity } from "@fortawesome/free-solid-svg-icons"
@@ -13,12 +13,13 @@ export default ({ pageContext: { locale } }) => {
 
   const handleMapLoaded = () => setMapLoaded(true)
 
+  const { formatMessage } = useIntl()
+  const title = formatMessage({ id: "pages.contacts" })
+
   return (
-    <Layout>
+    <Layout title={title}>
       <section>
-        <h1>
-          <FormattedMessage id="pages.contacts" />
-        </h1>
+        <h1>{title}</h1>
 
         <div className="contacts">
           <div className="contacts__info card card--left">

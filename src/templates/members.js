@@ -22,10 +22,16 @@ export default ({ data, pageContext: { locale } }) => {
   let educations = member.educations || []
   educations = educations.sort((a, b) => +b.start - +a.start)
 
+  let memberName = `${member.lastName} ${member.firstName} ${member.middleName}`
+
+  if (member.middleName) {
+    memberName = `${memberName} ${member.middleName}`
+  }
+
   return (
-    <Layout>
+    <Layout title={memberName} description={member.position}>
       <article className="member">
-        <h1>{member.lastName} {member.firstName} {member.middleName} </h1>
+        <h1>{memberName}</h1>
         <section className="member__info-block">
           <div className="member__info card card--left">
             <h3 className="member__position">{member.position}</h3>
