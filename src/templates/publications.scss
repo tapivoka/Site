@@ -1,5 +1,7 @@
 .publication {
-  padding: 20px;
+  &__card {
+    padding: 20px;
+  }
 
   &__abstract {
     border-bottom: 1px solid #bbb;

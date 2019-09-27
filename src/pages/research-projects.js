@@ -15,7 +15,7 @@ export default ({ data, pageContext: { locale } }) => {
 
   return (
     <Layout>
-      <div>
+      <section>
         <h1>
           <FormattedMessage id="pages.research-projects" />
         </h1>
@@ -32,7 +32,7 @@ export default ({ data, pageContext: { locale } }) => {
               ),
           )}
         </div>
-      </div>
+      </section>
     </Layout>
   )
 }

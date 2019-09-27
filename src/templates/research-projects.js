@@ -20,12 +20,12 @@ export default ({ data, pageContext: { locale } }) => {
 
   return (
     <Layout>
-      <div>
+      <article className="research-project">
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
-        <div className="research-project card card--left">
+        <div className="research-project__card card card--left">
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </div>
-      </div>
+      </article>
     </Layout>
   )
 }

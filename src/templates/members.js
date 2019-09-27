@@ -24,9 +24,9 @@ export default ({ data, pageContext: { locale } }) => {
 
   return (
     <Layout>
-      <div className="member">
+      <article className="member">
         <h1>{member.lastName} {member.firstName} {member.middleName} </h1>
-        <div className="member__info-block">
+        <section className="member__info-block">
           <div className="member__info card card--left">
             <h3 className="member__position">{member.position}</h3>
             {
@@ -46,10 +46,10 @@ export default ({ data, pageContext: { locale } }) => {
           <div className="member__photo-wrapper card">
             <Img className="member__photo" fluid={member.photo.childImageSharp.fluid} />
           </div>
-        </div>
+        </section>
         {
           educations.length > 0 &&
-          <>
+          <section>
             <h2>
               <FormattedMessage id="member-page.education" />
             </h2>
@@ -71,12 +71,12 @@ export default ({ data, pageContext: { locale } }) => {
                 </div>
               ))}
             </div>
-          </>
+          </section>
         }
         {
           publications.length > 0
           &&
-          <>
+          <section>
             <h2>
               <FormattedMessage id="member-page.publications" />
             </h2>
@@ -88,10 +88,9 @@ export default ({ data, pageContext: { locale } }) => {
                   ),
               )}
             </div>
-          </>
+          </section>
         }
-      </div>
-
+      </article>
     </Layout>
   )
 }

@@ -13,10 +13,10 @@ export const PublicationCard = ({ node }) => {
   }
 
   return (
-    <div className="publication-card card card--left card--with-hover">
+    <article className="publication-card card card--left card--with-hover">
       <h3 className="publication-card__title" dangerouslySetInnerHTML={{ __html: node.frontmatter.title }} />
       <div>{node.frontmatter.journal}</div>
-      <div className="publication-card__links">
+      <nav className="publication-card__links">
         {
           !!node.html &&
           <button className="link-button publication-card__link"
@@ -28,11 +28,11 @@ export const PublicationCard = ({ node }) => {
         <Link className="publication-card__link" to={node.fields.slug}>
           <FormattedMessage id="common.more-details" />
         </Link>
-      </div>
-      <div
+      </nav>
+      <aside
         className={cn("publication-card__abstract", { "publication-card__abstract--visible": isAbstractVisible })}
         dangerouslySetInnerHTML={{ __html: node.html }}
       />
-    </div>
+    </article>
   )
 }

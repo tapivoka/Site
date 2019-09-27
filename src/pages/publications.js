@@ -19,14 +19,14 @@ export default ({ data, pageContext: { locale } }) => {
 
   return (
     <Layout>
-      <div>
+      <section>
         <h1>
           <FormattedMessage id="pages.publications" />
         </h1>
         <div className="publications">
           {years.map(
             year => (
-              <div className="publications__section" key={year}>
+              <section className="publications__section" key={year}>
                 <h2 className="publications__year">{year}</h2>
                 {groupedByYear[year].map(
                   node =>
@@ -34,11 +34,11 @@ export default ({ data, pageContext: { locale } }) => {
                       <PublicationCard node={node} key={node.id} />
                     ),
                 )}
-              </div>
+              </section>
             ),
           )}
         </div>
-      </div>
+      </section>
     </Layout>
   )
 }

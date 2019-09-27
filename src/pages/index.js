@@ -12,7 +12,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <div>
+      <section>
         <h1>
           <FormattedMessage id="index-page.header" />
         </h1>
@@ -20,7 +20,7 @@ export default ({ data }) => {
           fluid={data.file.childImageSharp.fluid}
           alt={formatMessage({ id: "index-page.image-alt" })}
         />
-      </div>
+      </section>
     </Layout>
   )
 }

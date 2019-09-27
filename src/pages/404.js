@@ -6,11 +6,11 @@ import { Layout } from "../components/layout"
 export default () => {
   return (
     <Layout>
-      <div>
+      <section>
         <h1>
           <FormattedMessage id="pages.404" />
         </h1>
-      </div>
+      </section>
     </Layout>
   )
 }
