@@ -5,6 +5,7 @@ import { Layout } from "../components/layout"
 import { getLocalizedNodes } from "../intl/utils"
 import { defaultLocale } from "../intl/locales"
 
+import "katex/dist/katex.min.css"
 import "./publications.scss"
 
 export default ({ data, pageContext: { locale } }) => {

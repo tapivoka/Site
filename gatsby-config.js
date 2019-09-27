@@ -23,7 +23,19 @@ module.exports = {
         path: `${__dirname}/content/`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`
+            }
+          }
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
