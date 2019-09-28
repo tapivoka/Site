@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://mpd.chemphys.ru/sitemap.xml
+Host: https://mpd.chemphys.ru
