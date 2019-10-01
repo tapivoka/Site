@@ -22,7 +22,7 @@ export default ({ data, pageContext: { locale } }) => {
   let educations = member.educations || []
   educations = educations.sort((a, b) => +b.start - +a.start)
 
-  let memberName = `${member.lastName} ${member.firstName} ${member.middleName}`
+  let memberName = `${member.lastName} ${member.firstName}`
 
   if (member.middleName) {
     memberName = `${memberName} ${member.middleName}`
