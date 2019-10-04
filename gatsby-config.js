@@ -30,9 +30,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-katex`,
             options: {
-              strict: `ignore`
-            }
-          }
+              strict: `ignore`,
+            },
+          },
         ],
       },
     },
@@ -43,14 +43,31 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-149415782-1",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-yandex-metrika`,
+      options: {
+        trackingId: "55613563",
+        clickmap: true,
+        trackLinks: true,
+        trackHash: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      },
+    },
     `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://mpd.chemphys.ru',
-        sitemap: 'https://mpd.chemphys.ru/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
+        host: "https://mpd.chemphys.ru",
+        sitemap: "https://mpd.chemphys.ru/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
