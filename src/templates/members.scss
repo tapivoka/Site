@@ -4,7 +4,7 @@
     grid-gap: 20px;
     grid-template-columns: 1fr;
 
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: 950px) {
       grid-template-columns: 1fr 250px;
     }
   }

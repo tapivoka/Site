@@ -24,8 +24,8 @@
     height: 100%;
   }
 
-  @media screen and (min-width: 800px) {
-    grid-template-columns: 1fr 800px 1fr;
+  @media screen and (min-width: 950px) {
+    grid-template-columns: 1fr 900px 1fr;
   }
 }
 

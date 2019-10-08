@@ -7,6 +7,7 @@
     "research-projects": "Research projects",
     "members": "Members",
     "publications": "Publications",
+    "vacancies": "Vacancies",
     "contacts": "Contacts",
     "404": "Page not found"
   },
@@ -29,5 +30,8 @@
     "education": "Education",
     "now": "now",
     "publications": "Publications"
+  },
+  "vacancies-page": {
+    "no-vacancies": "Unfortunately, at the moment we have no vacancies"
   }
 }

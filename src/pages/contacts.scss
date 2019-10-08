@@ -4,7 +4,7 @@
   grid-auto-rows: minmax(350px, min-content);
   grid-gap: 20px;
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 950px) {
     grid-template-columns: 4fr 6fr;
   }
 

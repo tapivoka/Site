@@ -9,6 +9,7 @@ const pages = [
   "research-projects",
   "members",
   "publications",
+  "vacancies",
   "contacts",
 ]
 
