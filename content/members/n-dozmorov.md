@@ -1,4 +1,5 @@
 ---
+order: 3
 firstName: Николай
 middleName: Владимирович
 lastName: Дозморов

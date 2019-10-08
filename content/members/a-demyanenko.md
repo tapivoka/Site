@@ -1,7 +1,8 @@
 ---
+order: 4
 firstName: Александр
 middleName: Витальевич
-lastName: Демьяненко
+lastName: "Демьяненко"
 position: Лаборант
 photo: ../../images/members/default.jpg
 educations:

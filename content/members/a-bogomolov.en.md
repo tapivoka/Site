@@ -1,4 +1,5 @@
 ---
+order: 2
 firstName: Alexandr
 lastName: Bogomolov
 position: Researcher

@@ -11,7 +11,11 @@ import "./members.scss"
 
 export default ({ data, pageContext: { locale } }) => {
   const nodes = data.allMarkdownRemark.edges.map(e => e.node)
+
   const localizedNodes = getLocalizedNodes(nodes, locale, defaultLocale)
+    .sort((a, b) => (+a.frontmatter.order - +b.frontmatter.order)
+      || a.frontmatter.lastName.localeCompare(b.frontmatter.lastName),
+    )
 
   const { formatMessage } = useIntl()
   const title = formatMessage({ id: "pages.members" })
@@ -42,21 +46,20 @@ export default ({ data, pageContext: { locale } }) => {
 export const query = graphql`
     query {
         allMarkdownRemark(
-            filter: {fields: {type: {eq: "members"}}},
-            sort: { fields: [frontmatter___lastName], order: [ASC] }
+            filter: {fields: {type: {eq: "members"}}}
         ){
-            totalCount
             edges {
                 node {
                     id
                     frontmatter {
+                        order
                         firstName,
                         middleName
                         lastName,
                         position,
                         photo {
                             childImageSharp {
-                                fluid(maxWidth: 800) {
+                                fluid(maxWidth: 300) {
                                     ...GatsbyImageSharpFluid
                                 }
                             }
