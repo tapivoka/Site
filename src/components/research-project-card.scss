@@ -1,8 +1,8 @@
 .research-project-card {
   display: grid;
-  grid-template-rows: 200px 1fr;
-  grid-template-areas: 'image' 'info';
-  grid-template-columns: 1fr;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: 'image info';
+  grid-gap: 10px;
 
   &__image-wrapper {
     grid-area: image;
@@ -22,7 +22,8 @@
   }
 
   &__title {
-    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 
   &__more-link {
